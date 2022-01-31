@@ -18,10 +18,17 @@ In 2022, we decided to take on this challenge.
 - ### Progressive Web App
 - ### React
 - ### Firebase
-
-## Installation
+    -
 
 ## How to Use
+
+Once installed, use npm or yarn to build a version of the pwa.
+When you do that, you should see a build folder. You should run this build file on
+a server. Once you run the app in production mode, you can install the app as a pwa.
+
+There are many ways to run the app on a server. One way is to use npm or yarn to install or add serve and run it on there
+
+If you do not do a production build of the app, you will not be able to install the app as a pwa.
 
 ## Credits
 - Michael Lin
