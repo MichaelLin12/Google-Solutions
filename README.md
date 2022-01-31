@@ -24,4 +24,9 @@ In 2022, we decided to take on this challenge.
 ## How to Use
 
 ## Credits
-- @MichaelLin12
+- Michael Lin
+- Adithya Konduru
+- Max Battle
+- Leo Shen
+- Caleb Starfeldt
+- Mihir
