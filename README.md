@@ -7,6 +7,8 @@ to give prospective developers the opportunity to contribute to society by lever
 various software technologies to solve or work towards solving at least [1 of the UN's
 17 sustainable development goals](https://www.un.org/sustainabledevelopment/sustainable-development-goals/).
 
+In 2022, we decided to take on this challenge.
+
 ## Motivation
 
 ## ScreenShots
@@ -22,3 +24,4 @@ various software technologies to solve or work towards solving at least [1 of th
 ## How to Use
 
 ## Credits
+- @MichaelLin12
