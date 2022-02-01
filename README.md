@@ -16,7 +16,9 @@ In 2022, we decided to take on this challenge.
 ## Tech/FrameWork Used
 
 - ### Progressive Web App
+    -
 - ### React
+    -
 - ### Firebase
     -
 
