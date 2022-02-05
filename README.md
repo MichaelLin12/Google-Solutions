@@ -24,11 +24,13 @@ Our hope is to play a small but significant role in minimizing and possibly end 
 ## Tech/FrameWork Used
 
 - ### Progressive Web App
-    -
+    - A progressive web app(PWA) are web apps that use service workers and manifest files to make web apps installable and reliable, allowing us to mimick native apps.
+
 - ### React
-    -
+    - React is a frontend javascript library developed by Meta that allows developers to easily create web apps.
+
 - ### Firebase
-    -
+    - Firebase is a NoSQL database developed Google
 
 ## How to Use
 
