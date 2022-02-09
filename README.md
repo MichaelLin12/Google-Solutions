@@ -48,4 +48,4 @@ If you do not do a production build of the app, you will not be able to install 
 - Max Battle
 - Leo Shen
 - Caleb Starfeldt
-- Mihir
+- Mihir Trivedi
