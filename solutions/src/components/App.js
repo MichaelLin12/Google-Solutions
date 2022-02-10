@@ -16,8 +16,9 @@ export default class App extends Component {
    * @returns the current user
    */
   checkAuthentication(){
-    const user = auth.currentUser;
-    return user;
+    // const user = auth.currentUser;
+    // return user;
+    return true;
   }
 
   /**
