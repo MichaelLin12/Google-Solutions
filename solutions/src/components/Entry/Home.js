@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid,Typography,Button } from '@mui/material';
-import { styled } from '@mui/material/styles'
+import { styled } from '@mui/material/styles';
+import {useNavigate} from 'react-router-dom';
 
 const StartButton = styled(Button)(({ theme }) => ({
   color: '#FFFFFF',
@@ -10,7 +11,15 @@ const StartButton = styled(Button)(({ theme }) => ({
   },
 }));
 
+
 export default function Home() {
+  let navigate = useNavigate();
+
+  let startButtonClick = ()=>{
+    navigate('/login');
+  }
+
+
   return (
     <Grid container columns={1}>
       <Grid item  sx={{ bgcolor: '#cfe8fc', height: '25rem', width:'100%', textAlign: 'center'}}>
@@ -26,9 +35,9 @@ export default function Home() {
         <Typography variant='subtitle1' sx={{marginBottom:'5rem', color:'#FFFFFF'}}>
           At Eden's Garden, We make sure this doesn't happen
         </Typography>
-        <StartButton variant='contained'>Help Us</StartButton>
+        <StartButton onClick={startButtonClick} variant='contained'>Help Us</StartButton>
       </Grid>
-      <Grid item textAlign='center' sx={{ bgcolor: '#f32432', height: '25rem', width:'100%'}}>
+      <Grid item textAlign='center' sx={{ bgcolor: '#f32432', height: '20rem', width:'100%'}}>
         Hello World
       </Grid>
     </Grid>
