@@ -1,0 +1,30 @@
+.appbar
+{
+    background-color: blue;
+    flex-grow:1;
+}
+
+.navbar
+{
+    background-color: red;
+    flex-grow:1
+}
+
+.content
+{
+    background-color: purple;
+    flex-grow:10;
+}
+
+.market{
+    display:flex;
+    flex-direction:column;
+    height: 100vh;
+}
+
+.item2{
+    background-color: green;
+    flex-grow:100;
+    display:flex;
+    flex-direction: row;
+}
