@@ -7,6 +7,7 @@ import ProtectedRoute from './ProtectedRoute';
 import { authentication as auth} from "../firebase.js";
 import {Navigate} from "react-router-dom";
 import Market from './Market';
+import Profile from './Entry/Profile';
 
 export default class App extends Component {
 
@@ -31,6 +32,7 @@ export default class App extends Component {
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/profile" element={<Profile/>}/>
         <Route path="/market" 
         element={
         <ProtectedRoute func={this.checkAuthentication}>
