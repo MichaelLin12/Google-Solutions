@@ -5,12 +5,12 @@ import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
 const MainPaper = styled(Paper)(({ theme }) => ({
-  height:'25rem',
+  height:'30rem',
   width:'25rem',
   textAlign:'center'
 }));
 
-export default function Login() {
+export default function Login(props) {
   const navigate = useNavigate();
 
   return (
@@ -20,20 +20,25 @@ export default function Login() {
           Login
         </Typography>
         <div className='inputs'>
-          <TextField id="standard-basic" label="Username" variant="standard" error={false}/>
+          <TextField id="standard-basic" label="Username" variant="standard" error={props.usernameError}/>
           <br/>
           <div className='input-password'>
-            <TextField id="standard-basic" type='password' label="Password" variant="standard" error={false} />
+            <TextField id="standard-basic" type='password' label="Password" variant="standard" error={props.passwordError} />
           </div>
+        </div>
+        <div className='forget-container'>
+          <Link component='button' onClick={()=>{navigate('/forgetPassword')}} underline="hover">
+            {'Forget Password'}
+          </Link>
         </div>
         <div className='button-container'>
           <Button variant='outlined'>
             Login
           </Button>
         </div>
-        <div className='link-container'>
-          <Link component='button' onClick={()=>{navigate('/forgetPassword')}} underline="hover">
-            {'Forget Password'}
+        <div className='signup-container'>
+          <Link component='button' onClick={()=>{navigate('/signup')}} underline="hover">
+            {'New User'}
           </Link>
         </div>
       </MainPaper>
