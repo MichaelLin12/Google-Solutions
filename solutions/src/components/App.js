@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import Home from './Entry/Home';
 import Login from './Entry/Login';
 import SignUp from './Entry/SignUp';
+import ForgetPassword from './Entry/ForgetPassword';
 import ProtectedRoute from './ProtectedRoute';
 import { authentication as auth} from "../firebase.js";
 import {Navigate} from "react-router-dom";
@@ -30,6 +31,7 @@ export default class App extends Component {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/forgetPassword" element={<ForgetPassword/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/market" 
         element={
