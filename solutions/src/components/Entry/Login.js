@@ -10,6 +10,7 @@ const MainPaper = styled(Paper)(({ theme }) => ({
   textAlign:'center'
 }));
 
+
 export default function Login(props) {
   const navigate = useNavigate();
 
@@ -20,10 +21,10 @@ export default function Login(props) {
           Login
         </Typography>
         <div className='inputs'>
-          <TextField id="standard-basic" label="Username" variant="standard" error={props.usernameError}/>
+          <TextField id="email" label="Email" variant="standard" error={props.emailError} onChange={props.updateEmail}/>
           <br/>
           <div className='input-password'>
-            <TextField id="standard-basic" type='password' label="Password" variant="standard" error={props.passwordError} />
+            <TextField id="password" type='password' label="Password" variant="standard" error={props.passwordError} onChange={props.updatePassword}/>
           </div>
         </div>
         <div className='forget-container'>
@@ -32,7 +33,7 @@ export default function Login(props) {
           </Link>
         </div>
         <div className='button-container'>
-          <Button variant='outlined'>
+          <Button variant='outlined' onClick={props.login}>
             Login
           </Button>
         </div>

@@ -8,14 +8,20 @@ import ProtectedRoute from './ProtectedRoute';
 import { authentication as auth} from "../firebase.js";
 import {Navigate} from "react-router-dom";
 import Market from './Market';
+import {db,authentication} from "../firebase.js";
+import { doc, getDoc } from "firebase/firestore";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+
 
 export default class App extends Component {
 
   constructor(props){
     super(props);
     this.state={
-      usernameLoginError:false,
-      passwordLoginError:false
+      emailLoginError:false,
+      passwordLoginError:false,
+      email:'',
+      password:''
     }
   }
 
@@ -29,12 +35,32 @@ export default class App extends Component {
     return user;
   }
 
-  changeLoginUserName(){
-    (this.state.usernameLoginError)? this.setState({usernameLoginError:false}):this.setState({usernameLoginError:true});
+  updateEmail(e){
+    this.setState({email:e.target.value, emailLoginError:false})
+    console.log(e.target.value)
   }
 
-  changeLoginPassword(){
-    (this.state.usernameLoginError)? this.setState({passwordLoginError:false}):this.setState({passwordLoginError:true});
+  updatePassword(e){
+    this.setState({password:e.target.value, passwordLoginError:false})
+    console.log(e.target.value)
+  }
+
+  async login(){
+    console.log("Hello World");
+    const auth = authentication;
+    signInWithEmailAndPassword(auth, this.state.email, this.state.password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user)
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage)
+        this.setState({emailLoginError:true, passwordLoginError:true});
+  });
   }
 
   /**
@@ -46,7 +72,7 @@ export default class App extends Component {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/login" element={<Login usernameError={this.state.usernameLoginError} passwordError={this.state.passwordLoginError} changePasswordError={()=>{this.changeLoginPassword()}} changeUsernameError={()=>{this.changeLoginUserName()}}/>}/>
+        <Route path="/login" element={<Login emailError={this.state.emailLoginError} passwordError={this.state.passwordLoginError} updateEmail={(e)=>{this.updateEmail(e)}} updatePassword={(e)=>{this.updatePassword(e)}} login={()=>{this.login()}}/>}/>
         <Route path="/forgetPassword" element={<ForgetPassword/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/market" 
