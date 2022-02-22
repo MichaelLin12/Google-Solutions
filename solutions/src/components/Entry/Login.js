@@ -33,7 +33,7 @@ export default function Login(props) {
           </Link>
         </div>
         <div className='button-container'>
-          <Button variant='outlined' onClick={props.login}>
+          <Button variant='outlined' onClick={()=>{props.login()}}>
             Login
           </Button>
         </div>

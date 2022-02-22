@@ -26,7 +26,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
 const Styledappbar = styled(AppBar)(({theme}) =>({
   backgroundColor:'#000000',
   display:'flex',
-  height:'10vh',
+  height:'64px'
 }));
 
 
@@ -43,7 +43,7 @@ export default function Home() {
     <div>
       <Styledappbar position='fixed' elevation={4}>
         <Toolbar>
-          <Typography variant='h4' sx={{flex:1}}>
+          <Typography variant='h6' sx={{flex:1}}>
             Eden's Garden
           </Typography>
           <StartButton onClick={startButtonClick}>
