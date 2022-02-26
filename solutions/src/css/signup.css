@@ -1,0 +1,32 @@
+.box{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.category{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    width: 100%;
+    background-color: #EE00EE;
+}
+
+.item-1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: azure;
+}
+
+.item-2{
+    background-color: blanchedalmond;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form{
+    display: inline-block;
+}
