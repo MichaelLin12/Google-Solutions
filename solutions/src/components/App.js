@@ -3,7 +3,6 @@ import {Routes, Route} from 'react-router-dom';
 import Home from './Entry/Home';
 import Login from './Entry/Login';
 import SignUp from './Entry/SignUp';
-import ForgetPassword from './Entry/ForgetPassword';
 import ProtectedRoute from './ProtectedRoute';
 import { authentication as auth} from "../firebase.js";
 import {Navigate, useNavigate} from "react-router-dom";
@@ -19,22 +18,82 @@ export default function App() {
   const [passwordLoginError, setpasswordLoginError] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('')
+  const [org, setOrg] = useState('');
+  const [zipcode, setZipcode] = useState('00000');
+  const [address, setAddress] = useState('');
+  const [state, setState] = useState('')
+  const [username, setUsername] = useState('');
+  const [role, setRole] = useState('');
+  const [signUpErr, setsignUpErr] = useState(false);
   
+  const onSignup = function(){
+    console.log("Signed Up");
+    if(name === '' || org === '' ||zipcode === '00000' ||address === '' || state === '' || role === '' || username === '' || email === '' || password === '') {
+      console.log("Error!");
+      setsignUpErr(true);
+    }
+  }
+
   const checkAuthentication = function(){
     const user = auth.currentUser;
     return user;
   }
 
-  const updateEmail = function(e){
-    setemailLoginError(false);
-    setEmail(e.target.value);
+  const updateName = function(e){
+    setName(e.target.value);
+    setsignUpErr(false)
+    console.log(e.target.value);
+  }
+
+  const updateState = function(e){
+    setState(e.target.value);
+    setsignUpErr(false);
+    console.log(e.target.value);
+  }
+
+  const updateUsername = function(e){
+    setUsername(e.target.value);
+    setsignUpErr(false);
+    console.log(e.target.value);
+  }
+
+  const updateAddress = function(e){
+    setAddress(e.target.value);
+    setsignUpErr(false);
+    console.log(e.target.value);
+  }
+
+  const updateOrg = function(e){
+    setOrg(e.target.value);
+    setsignUpErr(false);
+    console.log(e.target.value);
+  }
+
+  const updateZipcode = function(e){
+    setZipcode(e.target.value);
+    setsignUpErr(false);
+    console.log(e.target.value);
+  }
+
+  const updateRole = function(e){
+    setRole(e.target.value);
+    setsignUpErr(false);
     console.log(e.target.value);
   }
 
   const updatePassword = function(e){
     setPassword(e.target.value);
+    setsignUpErr(false);
     setpasswordLoginError(false);
     console.log(e.target.value)
+  }
+
+  const updateEmail = function(e){
+    setemailLoginError(false);
+    setsignUpErr(false);
+    setEmail(e.target.value);
+    console.log(e.target.value);
   }
   
   const login = async function(){
@@ -62,8 +121,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login emailError={emailLoginError} passwordError={passwordLoginError} updateEmail={(e)=>{updateEmail(e)}} updatePassword={(e)=>{updatePassword(e)}} login={()=>{login()}}/>}/>
-        <Route path="/forgetPassword" element={<ForgetPassword/>}/>
-        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/signup" element={<SignUp updateEmail={(e)=>{updateEmail(e)}} updateState={(e)=>{updateState(e)}} updateRole={(e)=>{updateRole(e)}} updateZipcode={(e)=>{updateZipcode(e)}} updatePassword={(e)=>{updatePassword(e)}} updateName={(e)=>{updateName(e)}} updateOrg={(e)=>{updateOrg(e)}} updateAddress={(e)=>{updateAddress(e)}} updateUsername={(e)=>{updateUsername(e)}} onSignup={()=>{onSignup()}} signUpErr = {signUpErr}/>}/>
         <Route path="/market" 
         element={
         <ProtectedRoute func={checkAuthentication}>

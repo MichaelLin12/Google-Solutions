@@ -27,11 +27,6 @@ export default function Login(props) {
             <TextField id="password" type='password' label="Password" variant="standard" error={props.passwordError} onChange={props.updatePassword}/>
           </div>
         </div>
-        <div className='forget-container'>
-          <Link component='button' onClick={()=>{navigate('/forgetPassword')}} underline="hover">
-            {'Forget Password'}
-          </Link>
-        </div>
         <div className='button-container'>
           <Button variant='outlined' onClick={()=>{props.login()}}>
             Login
