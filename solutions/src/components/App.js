@@ -7,8 +7,9 @@ import ProtectedRoute from './ProtectedRoute';
 import { authentication as auth} from "../firebase.js";
 import {Navigate, useNavigate} from "react-router-dom";
 import Market from './Market';
+import Donation from './Donation';
 import {db,authentication} from "../firebase.js";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
 
@@ -33,6 +34,37 @@ export default function App() {
       console.log("Error!");
       setsignUpErr(true);
     }
+
+    const auth = authentication;
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(async(userCredential) => {
+      const user = userCredential.user;
+      console.log(user,typeof(role))
+      await setDoc(doc(db, "Users", user.uid), {
+        name: name,
+        state: state,
+        Organization: org,
+        email:email,
+        type:role,
+        password:password,
+        username:username,
+        zip:zipcode,
+        address:address
+      });
+      if(role === 'buyer'){
+        console.log(role, 'Hi');
+        navigate('/market')
+      }else{
+        console.log(role, 'Hello');
+        navigate('/donations')
+      }
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage);
+      setsignUpErr(true);
+    });
   }
 
   const checkAuthentication = function(){
@@ -100,11 +132,26 @@ export default function App() {
     console.log("Hello World");
     const auth = authentication;
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async(userCredential) => {
         // Signed in 
         const user = userCredential.user;
         console.log(user)
-        navigate('/market');
+        const docRef = doc(db, "Users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data());
+          if(docSnap.data().type==='buyer'){
+            console.log(docSnap.data().type);
+            navigate('/market');
+          }
+          else{
+            console.log(docSnap.data().type);
+            navigate('/donations');
+          }
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
         // ...
       })
       .catch((error) => {
@@ -126,6 +173,11 @@ export default function App() {
         element={
         <ProtectedRoute func={checkAuthentication}>
           <Market/>
+        </ProtectedRoute>}/>
+        <Route path="/donations" 
+        element={
+        <ProtectedRoute func={checkAuthentication}>
+          <Donation/>
         </ProtectedRoute>}/>
         <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>
