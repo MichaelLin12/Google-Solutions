@@ -60,7 +60,7 @@ export default function App() {
       }
     })
     .catch((error) => {
-      const errorCode = error.code;
+      //const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorMessage);
       setsignUpErr(true);
@@ -68,8 +68,9 @@ export default function App() {
   }
 
   const checkAuthentication = function(){
-    const user = auth.currentUser;
-    return user;
+    // const user = auth.currentUser;
+    // return user;
+    return true;
   }
 
   const updateName = function(e){
@@ -155,7 +156,7 @@ export default function App() {
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
+        //const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage)
         setemailLoginError(true);

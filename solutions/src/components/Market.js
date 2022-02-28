@@ -1,96 +1,82 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import AppBar from '@mui/material/AppBar';
-import CssBaseline from '@mui/material/CssBaseline';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import { Toolbar, AppBar, Typography,Button,List,ListItem,ListItemButton,Divider } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import {useNavigate} from 'react-router-dom';
+import '../css/market.css'
 
-const drawerWidth = 240;
 
-export default function Market() {
+const Styledappbar = styled(AppBar)(({theme}) =>({
+  backgroundColor:'#000000',
+  display:'flex',
+  height:'64px',
+  zIndex:theme.zIndex.drawer+1
+}));
+
+const StartButton = styled(Button)(({ theme }) => ({
+  color: 'theme.pallette.text',
+  backgroundColor: 'theme.pallete.main',
+  '&:hover': {
+    backgroundColor: '#000000',
+  },
+}));
+
+
+export default function Market(props) {
+
+  let navigate = useNavigate();
+
+  let startButtonClick = ()=>{
+    navigate('/login');
+  }
+
+  const items=props.items.map((e,i)=>{
+      if(i === 0 || i === props.items.length)
+      {
+        return (
+        <ListItem>
+          {e}
+        </ListItem>
+        );
+      }else{
+        return(
+          <div>
+            <ListItem>
+              {e}
+            </ListItem>
+            <Divider light/>
+          </div>
+        )
+      }
+  })
+
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+    <div className='market'>
+      <Styledappbar position='sticky'>
         <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Clipped drawer
+          <Typography variant='h6' sx={{flex:1}}>
+            Eden's Garden
           </Typography>
+          <StartButton onClick={startButtonClick}>
+            Login
+          </StartButton>
         </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-        }}
-      >
-        <Toolbar />
-        <Box sx={{ overflow: 'auto' }}>
+      </Styledappbar>
+      <div className='main'>
+        <div className='navbar'>
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            <ListItemButton>
+              <Typography>
+                Hello
+              </Typography>
+            </ListItemButton>
           </List>
-          <Divider />
+        </div>
+        <div className='body'>
           <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            {items}
           </List>
-        </Box>
-      </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar />
-        <List>
-          <ListItem>
-            Hello World
-          </ListItem>
-          <ListItem>
-            Hello World
-          </ListItem>
-          <ListItem>
-            Hello World
-          </ListItem>
-          <ListItem>
-            Hello World
-          </ListItem>
-          <ListItem>
-            Hello World
-          </ListItem>
-          <ListItem>
-            Hello World
-          </ListItem>
-          <ListItem>
-            Hello World
-          </ListItem>
-          <ListItem>
-            Hello World
-          </ListItem>
-          <ListItem>
-            Hello World
-          </ListItem>
-          <ListItem>
-            Hello World
-          </ListItem>
-          <ListItem>
-            Hello World
-          </ListItem>
-          <ListItem>
-            Hello World
-          </ListItem>
-        </List>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 }
