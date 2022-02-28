@@ -28,9 +28,10 @@ export default function Market(props) {
   let startButtonClick = ()=>{
     navigate('/login');
   }
-
-  const items=props.items.map((e,i)=>{
-      if(i === 0 || i === props.items.length)
+  //change all number to props.item
+  let number = [1,2,3,4]
+  const items=number.map((e,i)=>{
+      if(i === 0 || i === number.length)
       {
         return (
         <ListItem>
