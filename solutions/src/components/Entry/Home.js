@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import Charity from '../../images/charityHelp.jfif';
 import '../../css/Home.css';
 import Kids from '../../images/hunger.jfif';
+import Appbar from './Appbar.js'
 
 
 const StartButton = styled(Button)(({ theme }) => ({
@@ -23,12 +24,6 @@ const StyledButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const Styledappbar = styled(AppBar)(({theme}) =>({
-  backgroundColor:'#000000',
-  display:'flex',
-  height:'64px'
-}));
-
 
 export default function Home() {
   let navigate = useNavigate();
@@ -41,18 +36,9 @@ export default function Home() {
 
   return (
     <div>
-      <Styledappbar position='fixed' elevation={4}>
-        <Toolbar>
-          <Typography variant='h6' sx={{flex:1}}>
-            Eden's Garden
-          </Typography>
-          <StartButton onClick={startButtonClick}>
-            Login
-          </StartButton>
-        </Toolbar>
-      </Styledappbar>
+      <Appbar />
       <Grid container columns={1}>
-        <Grid item  sx={{  height: '25rem', width:'100%', marginTop:'5rem'}}>
+        <Grid item  sx={{  height: '25rem', width:'100%', marginTop:'1rem'}}>
           <Grid container column='2' sx={{padding:'1rem'}}>
             <Grid item sx={{width:'47%',height:'25rem', textAlign:'center', backgroundColor:'#345566', borderRadius: '3.125rem', boxShadow:'rgba(0, 0, 0, 0.24) 0rem 0.1875rem 0.5rem', marginRight:'5%'}}>
               <Typography variant='subtitle1' sx={{ color:'#FFFFFF', marginTop:'5rem'}}>

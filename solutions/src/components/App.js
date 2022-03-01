@@ -68,9 +68,8 @@ export default function App() {
   }
 
   const checkAuthentication = function(){
-    // const user = auth.currentUser;
-    // return user;
-    return true;
+    const user = auth.currentUser;
+    return user;
   }
 
   const updateName = function(e){
