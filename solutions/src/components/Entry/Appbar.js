@@ -14,7 +14,7 @@ export default function Appbar() {
 
     return (
         <div>
-            <Styledappbar position='sticky' elevation={4}>
+            <Styledappbar position='fixed' elevation={4}>
                 <Toolbar>
                     <Typography variant='h4' sx={{flex:1}}>
                         Eden's Garden

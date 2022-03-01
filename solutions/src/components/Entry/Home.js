@@ -38,7 +38,7 @@ export default function Home() {
     <div>
       <Appbar />
       <Grid container columns={1}>
-        <Grid item  sx={{  height: '25rem', width:'100%', marginTop:'1rem'}}>
+        <Grid item  sx={{  height: '25rem', width:'100%', marginTop:'5rem'}}>
           <Grid container column='2' sx={{padding:'1rem'}}>
             <Grid item sx={{width:'47%',height:'25rem', textAlign:'center', backgroundColor:'#345566', borderRadius: '3.125rem', boxShadow:'rgba(0, 0, 0, 0.24) 0rem 0.1875rem 0.5rem', marginRight:'5%'}}>
               <Typography variant='subtitle1' sx={{ color:'#FFFFFF', marginTop:'5rem'}}>

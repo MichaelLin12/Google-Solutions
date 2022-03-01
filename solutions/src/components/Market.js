@@ -1,34 +1,32 @@
 import * as React from 'react';
-import { Toolbar, AppBar, Typography,Button,List,ListItem,ListItemButton,Divider } from '@mui/material';
+import { Toolbar, AppBar, Typography,Button,List,ListItem,ListItemButton,Divider,ListItemIcon,ListItemText } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import {useNavigate} from 'react-router-dom';
 import '../css/market.css'
 import Appbar from './Entry/Appbar.js'
+import Items from './Items.js'
+import ShopIcon from '@mui/icons-material/Shop';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHistory } from '@fortawesome/free-solid-svg-icons';
+import History from './History.js'
+import Cart from './Cart.js'
+import { useState } from 'react';
 
 
 export default function Market(props) {
+  const [page, setPage] = useState('Market');
 
-  //change all number to props.item
-  let number = [1,2,3,4]
-  const items=number.map((e,i)=>{
-      if(i === 0 || i === number.length)
-      {
-        return (
-        <ListItem>
-          {e}
-        </ListItem>
-        );
-      }else{
-        return(
-          <div>
-            <ListItem>
-              {e}
-            </ListItem>
-            <Divider light/>
-          </div>
-        )
-      }
-  })
+  const view = function(){
+    if(page ==='Market'){
+      return <Items/>
+    }else if(page === 'Cart')
+    {
+      return <Cart/>
+    }else{
+      return <History/>
+    }
+  }
 
   return (
     <div className='market'>
@@ -36,17 +34,28 @@ export default function Market(props) {
       <div className='main'>
         <div className='navbar'>
           <List>
-            <ListItemButton>
-              <Typography>
-                Hello
-              </Typography>
+            <ListItemButton onClick={()=>{setPage('Market')}}>
+              <ListItemIcon>
+                <ShopIcon/>
+              </ListItemIcon>
+              <ListItemText primary='Market'/>
+            </ListItemButton>
+            <ListItemButton onClick={()=>{setPage('Cart')}}>
+              <ListItemIcon>
+                <ShoppingCartIcon/>
+              </ListItemIcon>
+              <ListItemText primary='Cart'/>
+            </ListItemButton>
+            <ListItemButton onClick={()=>{setPage('History')}}>
+              <ListItemIcon>
+                <FontAwesomeIcon icon={faHistory} />
+              </ListItemIcon>
+              <ListItemText primary='History'/>
             </ListItemButton>
           </List>
         </div>
         <div className='body'>
-          <List>
-            {items}
-          </List>
+          {view()}
         </div>
       </div>
     </div>

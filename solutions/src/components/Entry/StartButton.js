@@ -4,6 +4,9 @@ import PersonOutline from '@mui/icons-material/PersonOutline';
 import {IconButton, Popper, Box, Link} from '@mui/material'
 import {authentication} from '../../firebase.js'
 import { useState } from 'react';
+import { signOut } from "firebase/auth";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import NoAccountsIcon from '@mui/icons-material/NoAccounts';
 
 export default function StartButton() {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -13,6 +16,14 @@ export default function StartButton() {
 
     let startButtonClick = ()=>{
         navigate('/login');
+    }
+
+    const logOut = ()=>{
+        signOut(auth).then(() => {
+            navigate('/');
+        }).catch((error) => {
+            console.log(error)
+        });
     }
 
     const checkAuthentication = function(){
@@ -30,7 +41,7 @@ export default function StartButton() {
         return (
             <div>
                 <IconButton size='large' sx={{color:'#FFFFFF'}} onClick={startButtonClick}>
-                    <PersonOutline />
+                    <NoAccountsIcon />
                 </IconButton>
             </div>
         )
@@ -39,15 +50,18 @@ export default function StartButton() {
         return(
             <div>
                 <IconButton size='large' sx={{color:'#FFFFFF'}} onClick={handleClick}>
-                    <PersonOutline />
+                    <AccountCircleIcon />
                 </IconButton>
                 <Popper open={open} anchorEl={anchorEl}>
                     <Box sx={{ border: 1, p: 1, bgcolor: '#FFFFFF', zIndex:101,borderRadius:'5px',textAlign:'center'}}>
-                        <Link component='button' underline='hover'>Profile Page
+                        <Link component='button' underline='hover'>
+                            Profile Page
                         </Link><br/>
-                        <Link component='button' underline='hover'>About Us
+                        <Link component='button' underline='hover'>
+                            About Us
                         </Link><br/>
-                        <Link component='button' underline='hover'>Logout
+                        <Link component='button' underline='hover' onClick={logOut}>
+                            Logout
                         </Link>
                     </Box>
                 </Popper>

@@ -1,12 +1,13 @@
 .market{
     overflow-x: hidden;
+    margin-top: 4rem;
 
 }
 .appbar{
     height: 15vh;
     width: 100%;
     background-color: aqua;
-    position: fixed;
+    position: sticky;
     display:flex;
     top: 0;
     align-content: center;
@@ -29,6 +30,7 @@
     width: 10rem;
     height: 100%;
     position: fixed;
+    top:2;
     left: 0;
     overflow-x: hidden;
     padding-top: 0.5rem;
