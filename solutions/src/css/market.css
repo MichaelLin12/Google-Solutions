@@ -25,6 +25,33 @@
 }
 
 .navbar{
+    flex:1;
+    width: 10rem;
+    height: 100%;
+    position: fixed;
+    top:2;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 0.5rem;
+}
+
+.navcolor{
+    background-color: #819ca9;
+}
+
+.body{
+    flex: 7;
+    margin-left: 10rem;
+    height: 100%;
+    
+}
+
+.bodycolor{
+    background-color: #FFFFFF;
+}
+
+
+.links{
     background-color: #819ca9;
     flex:1;
     width: 10rem;
@@ -36,10 +63,9 @@
     padding-top: 0.5rem;
 }
 
-.body{
+.area{
     background-color: #FFFFFF;
     flex: 7;
     margin-left: 10rem;
     height: 100%;
-    
 }

@@ -30,8 +30,8 @@ export default function Market(props) {
     <div className='market'>
       <Appbar searchbar={true}/>
       <div className='main'>
-        <div className='navbar'>
-          <List>
+        <div className='links'>
+        <List>
             <ListItemButton onClick={()=>{setPage('Market')}}>
               <ListItemIcon>
                 <ShopIcon/>
@@ -52,7 +52,7 @@ export default function Market(props) {
             </ListItemButton>
           </List>
         </div>
-        <div className='body'>
+        <div className='area'>
           {view()}
         </div>
       </div>

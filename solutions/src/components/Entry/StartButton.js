@@ -49,18 +49,18 @@ export default function StartButton() {
         console.log("Hello World");
         return(
             <div>
-                <IconButton size='large' sx={{color:'#FFFFFF'}} onClick={handleClick}>
+                <IconButton size='large' disableRipple sx={{color:'#FFFFFF'}} onClick={handleClick}>
                     <AccountCircleIcon />
                 </IconButton>
                 <Popper open={open} anchorEl={anchorEl}>
                     <Box sx={{ border: 1, p: 1, bgcolor: colorPalette.primary.main.text, zIndex:101,borderRadius:'5px',textAlign:'center',}}>
-                        <Link component='button' underline='hover'>
+                        <Link component='button' underline='hover' sx={{color:'#000000'}}>
                             Profile Page
                         </Link><br/>
-                        <Link component='button' underline='hover'>
+                        <Link component='button' underline='hover' sx={{color:'#000000'}}>
                             About Us
                         </Link><br/>
-                        <Link component='button' underline='hover' onClick={logOut}>
+                        <Link component='button' underline='hover' onClick={logOut} sx={{color:'#000000'}}>
                             Logout
                         </Link>
                     </Box>
