@@ -19,13 +19,13 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    background-color: green;
+    background-color: #FFFFFF;
     height: fit-content;
     width: 100%;
 }
 
 .navbar{
-    background-color: orange;
+    background-color: #819ca9;
     flex:1;
     width: 10rem;
     height: 100%;
@@ -37,7 +37,7 @@
 }
 
 .body{
-    background-color: brown;
+    background-color: #FFFFFF;
     flex: 7;
     margin-left: 10rem;
     height: 100%;

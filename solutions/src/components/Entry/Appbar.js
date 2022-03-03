@@ -1,12 +1,13 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, IconButton, TextField } from '@mui/material';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 import {styled} from '@mui/material/styles';
 import '../../css/Appbar.css'
 import StartButton from './StartButton.js';
 import Search from './Search.js'
+import {colorPalette} from '../Theme.js';
 
 const Styledappbar = styled(AppBar)(({theme}) =>({
-    backgroundColor:'#000000',
+    backgroundColor:colorPalette.primary.main.color,
     display:'flex',
     height:'64px',
 }));

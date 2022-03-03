@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {List,ListItemButton,ListItemIcon,ListItemText } from '@mui/material';
-import '../../css/market.css'
 import Appbar from '../Entry/Appbar.js'
 import Items from './Items.js'
 import ShopIcon from '@mui/icons-material/Shop';
@@ -10,6 +9,7 @@ import { faHistory } from '@fortawesome/free-solid-svg-icons';
 import History from './History.js'
 import Cart from './Cart.js'
 import { useState } from 'react';
+import '../../css/market.css'
 
 
 export default function Market(props) {

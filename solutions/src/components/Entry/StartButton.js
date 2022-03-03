@@ -1,12 +1,12 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
-import PersonOutline from '@mui/icons-material/PersonOutline';
 import {IconButton, Popper, Box, Link} from '@mui/material'
 import {authentication} from '../../firebase.js'
 import { useState } from 'react';
 import { signOut } from "firebase/auth";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import NoAccountsIcon from '@mui/icons-material/NoAccounts';
+import {colorPalette} from '../Theme.js';
 
 export default function StartButton() {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -40,7 +40,7 @@ export default function StartButton() {
     if(!checkAuthentication()){
         return (
             <div>
-                <IconButton size='large' sx={{color:'#FFFFFF'}} onClick={startButtonClick}>
+                <IconButton size='large' sx={{color:colorPalette.primary.main.text}} onClick={startButtonClick}>
                     <NoAccountsIcon />
                 </IconButton>
             </div>
@@ -53,7 +53,7 @@ export default function StartButton() {
                     <AccountCircleIcon />
                 </IconButton>
                 <Popper open={open} anchorEl={anchorEl}>
-                    <Box sx={{ border: 1, p: 1, bgcolor: '#FFFFFF', zIndex:101,borderRadius:'5px',textAlign:'center'}}>
+                    <Box sx={{ border: 1, p: 1, bgcolor: colorPalette.primary.main.text, zIndex:101,borderRadius:'5px',textAlign:'center',}}>
                         <Link component='button' underline='hover'>
                             Profile Page
                         </Link><br/>
