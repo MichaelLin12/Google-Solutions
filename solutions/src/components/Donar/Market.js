@@ -28,7 +28,7 @@ export default function Market(props) {
 
   return (
     <div className='market'>
-      <Appbar/>
+      <Appbar searchbar={true}/>
       <div className='main'>
         <div className='navbar'>
           <List>
