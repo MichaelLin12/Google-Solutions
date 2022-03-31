@@ -1,0 +1,12 @@
+.studio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #819ca9;
+    margin-top: 4rem;
+    height: calc(100vh - 4rem);
+}
+
+.slate{
+    background-color: white;
+}

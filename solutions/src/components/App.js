@@ -11,6 +11,8 @@ import Donation from './Donee/Donation';
 import {db,authentication} from "../firebase.js";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import Profile from './Entry/Profile.js'
+import AboutUs from './Entry/AboutUs';
 
 
 export default function App() {
@@ -140,7 +142,7 @@ export default function App() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           console.log("Document data:", docSnap.data());
-          if(docSnap.data().type==='buyer'){
+          if(docSnap.data().type==='buyer' || docSnap.data().type==='Donee'){
             console.log(docSnap.data().type);
             navigate('/market');
           }
@@ -178,6 +180,16 @@ export default function App() {
         element={
         <ProtectedRoute func={checkAuthentication}>
           <Donation/>
+        </ProtectedRoute>}/>
+        <Route path="/profile" 
+        element={
+        <ProtectedRoute func={checkAuthentication}>
+          <Profile/>
+        </ProtectedRoute>}/>
+        <Route path="/about" 
+        element={
+        <ProtectedRoute func={checkAuthentication}>
+          <AboutUs/>
         </ProtectedRoute>}/>
         <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>

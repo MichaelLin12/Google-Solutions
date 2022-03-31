@@ -54,10 +54,10 @@ export default function StartButton() {
                 </IconButton>
                 <Popper open={open} anchorEl={anchorEl}>
                     <Box sx={{ border: 1, p: 1, bgcolor: colorPalette.primary.main.text, zIndex:101,borderRadius:'5px',textAlign:'center',}}>
-                        <Link component='button' underline='hover' sx={{color:'#000000'}}>
+                        <Link component='button' underline='hover' onClick={()=>{navigate('/profile')}} sx={{color:'#000000'}}>
                             Profile Page
                         </Link><br/>
-                        <Link component='button' underline='hover' sx={{color:'#000000'}}>
+                        <Link component='button' underline='hover' onClick={()=>{navigate('/about')}} sx={{color:'#000000'}}>
                             About Us
                         </Link><br/>
                         <Link component='button' underline='hover' onClick={logOut} sx={{color:'#000000'}}>

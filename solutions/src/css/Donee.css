@@ -50,3 +50,8 @@
     justify-content: center;
     height:calc(100vh - 64px);
 }
+
+.paper{
+    display: flex;
+    flex-direction: column;
+}
